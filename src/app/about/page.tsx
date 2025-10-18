@@ -1,6 +1,6 @@
 export default function AboutPage() {
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-[#f9f9f9] gap-6 p-4">
+    <main className="flex flex-col items-center justify-center min-h-screen bg-[#fdf3ec] gap-6 p-4">
       <section className="bg-white rounded-xl shadow-lg p-8 max-w-xl w-full">
         <span className="text-3xl mr-3">👩‍💻</span>
         <h1 className="text-2xl font-bold text-[#666699] mb-4">Lee SungHye</h1>

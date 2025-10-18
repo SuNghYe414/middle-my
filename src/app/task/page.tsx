@@ -32,7 +32,7 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <main className="min-h-screen bg-[#f9f9f9] p-8 flex flex-col items-center">
+    <main className="min-h-screen bg-[#fdf3ec] p-8 flex flex-col items-center">
       <h1 className="text-3xl font-extrabold text-[#666699] mb-10">
         📁 과제물 모음
       </h1>

@@ -35,7 +35,7 @@ export default function Home() {
   ]
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen p-4 bg-[#f9f9f9]">
+    <main className="flex flex-col items-center justify-center min-h-screen p-4 bg-[#fdf3ec]">
       <h1 className="text-3xl font-extrabold text-[#666699] mb-10">
         Team 미정
       </h1>
