@@ -34,7 +34,7 @@ export default function Home() {
         92415548 이성혜
       </h2>
       <h2 className="text-xl font-bold mb-8" style={{ color: '#666699' }}>
-        Tel.010-0526-1107
+        웹서버 보안 프로그래밍 수업을 듣고 있는 이성혜입니다.
       </h2>
     </main>
   )

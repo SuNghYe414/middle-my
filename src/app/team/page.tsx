@@ -17,7 +17,7 @@ export default function Home() {
     {
       name: '원종은',
       studentId: '92410823',
-      image: '/images/eun2.png',
+      image: '/images/eun3.png',
       github: 'https://github.com/euniii0224',
     },
     {
