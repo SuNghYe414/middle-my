@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'My Portfolio',
+  title: 'SH Portfolio',
   description: 'Create, Read, Update, and Delete in MongoDB',
 }
 
