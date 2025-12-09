@@ -1,6 +1,29 @@
-import Image from 'next/image'
+'use client'
 
-export default function Home() {
+import Image from 'next/image'
+import { useSession, signIn } from 'next-auth/react'
+
+export default function TeamPage() {
+  const { data: session } = useSession()
+
+  // 로그인하지 않은 경우
+  if (!session) {
+    return (
+      <main className="flex flex-col items-center justify-center min-h-screen p-4 bg-[#fdf3ec]">
+        <h1 className="text-3xl font-extrabold text-[#666699] mb-4">
+          로그인 후 이용해주세요
+        </h1>
+        <button
+          onClick={() => signIn('github')}
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          로그인
+        </button>
+      </main>
+    )
+  }
+
+  // 로그인한 경우 팀 페이지 내용 표시
   const teamMembers = [
     {
       name: '박민영',
