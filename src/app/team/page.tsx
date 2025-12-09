@@ -1,71 +1,74 @@
 'use client'
 
 import Image from 'next/image'
-import { useSession, signIn } from 'next-auth/react'
+import { useSession, signIn, signOut } from 'next-auth/react'
+
+const teamMembers = [
+  {
+    name: '박민영',
+    studentId: '92410756',
+    image: '/images/min2.png',
+    github: 'https://github.com/minyeong0125',
+  },
+  {
+    name: '송미강',
+    studentId: '92410794',
+    image: '/images/gang22.png',
+    github: 'https://github.com/JunByung2',
+  },
+  {
+    name: '원종은',
+    studentId: '92410823',
+    image: '/images/eun3.png',
+    github: 'https://github.com/euniii0224',
+  },
+  {
+    name: '이성혜',
+    studentId: '92415548',
+    image: '/images/sung.png',
+    github: 'https://github.com/SuNghYe414',
+  },
+  {
+    name: '허다현',
+    studentId: '92410990',
+    image: '/images/da.png',
+    github: 'https://github.com/chick127',
+  },
+]
 
 export default function TeamPage() {
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
 
-  // 로그인하지 않은 경우
-  if (!session) {
+  if (status === 'loading') return <p>Loading...</p>
+
+  if (!session)
     return (
-      <main className="flex flex-col items-center justify-center min-h-screen p-4 bg-[#fdf3ec]">
-        <h1 className="text-3xl font-extrabold text-[#666699] mb-4">
-          로그인 후 이용해주세요
-        </h1>
+      <div className="p-8 text-center">
+        <p className="text-xl mb-4">로그인 후 이용해주세요</p>
         <button
           onClick={() => signIn('github')}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="px-4 py-2 bg-blue-500 text-white rounded"
         >
-          로그인
+          GitHub 로그인
         </button>
-      </main>
+      </div>
     )
-  }
-
-  // 로그인한 경우 팀 페이지 내용 표시
-  const teamMembers = [
-    {
-      name: '박민영',
-      studentId: '92410756',
-      image: '/images/min2.png',
-      github: 'https://github.com/minyeong0125',
-    },
-    {
-      name: '송미강',
-      studentId: '92410794',
-      image: '/images/gang22.png',
-      github: 'https://github.com/JunByung2',
-    },
-    {
-      name: '원종은',
-      studentId: '92410823',
-      image: '/images/eun3.png',
-      github: 'https://github.com/euniii0224',
-    },
-    {
-      name: '이성혜',
-      studentId: '92415548',
-      image: '/images/sung.png',
-      github: 'https://github.com/SuNghYe414',
-    },
-    {
-      name: '허다현',
-      studentId: '92410990',
-      image: '/images/da.png',
-      github: 'https://github.com/chick127',
-    },
-  ]
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen p-4 bg-[#fdf3ec]">
+      <div className="flex justify-end w-full mb-6">
+        <button
+          onClick={() => signOut()}
+          className="px-4 py-2 bg-red-500 text-white rounded"
+        >
+          로그아웃
+        </button>
+      </div>
+
       <h1 className="text-3xl font-extrabold text-[#666699] mb-10">
         Team 미정
       </h1>
-      <p
-        className="mt-2 text-center font-bold text-sm"
-        style={{ color: '#666699' }}
-      >
+      <p className="mt-2 text-center font-bold text-sm text-[#666699]">
         사진 클릭시 GitHub로 이동
       </p>
 

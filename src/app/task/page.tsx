@@ -1,9 +1,8 @@
 'use client'
 
+import { useSession, signIn, signOut } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
-import GitHubRepos from '@/components/GitHubRepos'
-import { useSession, signIn } from 'next-auth/react'
 
 const projects = [
   {
@@ -47,41 +46,37 @@ const projects = [
 export default function TaskPage() {
   const { data: session, status } = useSession()
 
-  // 세션 로딩 중일 때
-  if (status === 'loading') {
-    return (
-      <main className="flex items-center justify-center min-h-screen">
-        <p>Loading...</p>
-      </main>
-    )
-  }
+  if (status === 'loading') return <p>Loading...</p>
 
-  // 로그인하지 않은 경우
-  if (!session) {
+  if (!session)
     return (
-      <main className="flex flex-col items-center justify-center min-h-screen bg-[#fdf3ec] p-8">
-        <h1 className="text-2xl font-bold mb-4 text-[#666699]">
-          로그인 후 이용해주세요
-        </h1>
+      <div className="p-8 text-center">
+        <p className="text-xl mb-4">로그인 후 이용해주세요</p>
         <button
           onClick={() => signIn('github')}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded"
+          className="px-4 py-2 bg-blue-500 text-white rounded"
         >
           GitHub 로그인
         </button>
-      </main>
+      </div>
     )
-  }
 
-  // 로그인한 경우
   return (
     <main className="min-h-screen bg-[#fdf3ec] p-8 flex flex-col items-center">
-      {/* 과제물 카드 섹션 */}
+      <div className="flex justify-end w-full mb-6">
+        <button
+          onClick={() => signOut()}
+          className="px-4 py-2 bg-red-500 text-white rounded"
+        >
+          로그아웃
+        </button>
+      </div>
+
       <h1 className="text-3xl font-extrabold text-[#666699] mb-10">
         📁 과제물 모음
       </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
         {projects.map((project, idx) => (
           <Link
             href={project.link}
@@ -107,11 +102,6 @@ export default function TaskPage() {
           </Link>
         ))}
       </div>
-
-      {/* GitHub 리포지토리 섹션 */}
-      <section className="w-full max-w-4xl">
-        <GitHubRepos />
-      </section>
     </main>
   )
 }
