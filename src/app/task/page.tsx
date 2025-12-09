@@ -63,15 +63,6 @@ export default function TaskPage() {
 
   return (
     <main className="min-h-screen bg-[#fdf3ec] p-8 flex flex-col items-center">
-      <div className="flex justify-end w-full mb-6">
-        <button
-          onClick={() => signOut()}
-          className="px-4 py-2 bg-red-500 text-white rounded"
-        >
-          로그아웃
-        </button>
-      </div>
-
       <h1 className="text-3xl font-extrabold text-[#666699] mb-10">
         📁 과제물 모음
       </h1>

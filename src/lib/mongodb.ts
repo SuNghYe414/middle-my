@@ -1,10 +1,7 @@
 import { MongoClient } from 'mongodb'
 
-const uri = process.env.MONGODB_URI as string
-
-if (!uri) {
-  throw new Error('Please define the MONGODB_URI environment variable')
-}
+const uri = process.env.MONGODB_URI
+if (!uri) throw new Error('Please define the MONGODB_URI environment variable')
 
 const options = {}
 
@@ -12,7 +9,6 @@ let client: MongoClient
 let clientPromise: Promise<MongoClient>
 
 declare global {
-  // allow global var declarations in TS
   var _mongoClientPromise: Promise<MongoClient> | undefined
 }
 

@@ -56,15 +56,6 @@ export default function TeamPage() {
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen p-4 bg-[#fdf3ec]">
-      <div className="flex justify-end w-full mb-6">
-        <button
-          onClick={() => signOut()}
-          className="px-4 py-2 bg-red-500 text-white rounded"
-        >
-          로그아웃
-        </button>
-      </div>
-
       <h1 className="text-3xl font-extrabold text-[#666699] mb-10">
         Team 미정
       </h1>
